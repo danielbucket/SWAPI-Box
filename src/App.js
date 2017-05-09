@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Favorites        from './components/favorites/Favorites';
-import CategorySelect   from './components/categorySelect/CategorySelect';
-import CategoryDisplay  from './components/categoryDisplay/CategoryDisplay';
-import AboutMovie       from './components/aboutMovie/AboutMovie.js';
+import Header from './components/header/Header';
+import CategorySelect from './components/categorySelect/CategorySelect';
+import CategoryDisplay from './components/categoryDisplay/CategoryDisplay';
+import AboutMovie from './components/aboutMovie/AboutMovie.js';
 
 
 class App extends Component {
@@ -40,9 +40,9 @@ class App extends Component {
     let dataSource;
 
     if (typeof input === 'string') {
-      dataSource = `http://swapi.co/api/${input}/?format=json`
-    } else {
-      dataSource = `http://swapi.co/api/films/${input}/?format=json`
+      dataSource = `http://swapi.co/api/${input}/?format=json`;
+    } else if (typeof input === 'number') {
+      dataSource = `http://swapi.co/api/films/${input}/?format=json`;
     }
 
     fetch(dataSource)
@@ -60,38 +60,35 @@ class App extends Component {
     return (
       <div className="App">
 
-        <header className="header">
-          <h3>
-            Swapi-Box
-          </h3>
-          <Favorites
-            favorites={ this.state.favorites }
-          />
-        </header>
-
-        <section className="category-container">
-          <CategorySelect
-            selectCategory={ this.selectCategory.bind(this) }
-          />
+        <section className="left-side-screen">
+          <aside className="aside">
+             <AboutMovie
+               movieSummary={ this.state.aboutMovie }
+               selectCategory={ this.selectCategory.bind(this) }
+              />
+          </aside>
         </section>
 
-        <section className="category-display">
-          <CategoryDisplay
-            selectedFavorites={ this.state.favorites }
-             presentCategory={ this.state.category }
-             typeCategory={ this.state.categoryType }
-          />
-        </section>
-
-        <aside className="about-the-movie-aside">
-           <AboutMovie
-             movieSummary={ this.state.aboutMovie }
-             selectCategory={ this.selectCategory.bind(this) }
+        <section className="right-side-screen">
+            <Header
+              favorites={ this.state.favorites }
             />
-        </aside>
+          <div className="category-container">
+            <CategorySelect
+              selectCategory={ this.selectCategory.bind(this) }
+            />
+          </div>
+            <CategoryDisplay
+              selectedFavorites={ this.state.favorites }
+              presentCategory={ this.state.category }
+              typeCategory={ this.state.categoryType }
+            />
+        </section>
+
       </div>
     );
   }
 }
+
 
 export default App;

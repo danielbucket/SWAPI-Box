@@ -1,11 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Russo+One|Glegoo');
+
 .about-movie-container {
-  border: 5px solid black;
+  width: 90%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.star-wars-logo {
+  background: url("./img/star-wars-logo.png") no-repeat center;
+  height: 150px;
 }
 
 .movie-title {
+  font-family: 'Russo One', sans-serif;
   font-size: 32px;
 }
 
-.learn-more {
+.movie-title h4 {
+  margin: 2px;
+}
 
+.learn-more {
+  width: 90%;
+  box-shadow: 0 0 3px 4px rgb(255, 255, 255);
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 12px;
+}
+
+.movie-describer {
+  font-size: 14px;
+  font-family: 'Glegoo', serif;
 }
