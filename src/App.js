@@ -18,18 +18,36 @@ class App extends Component {
     }
   }
 
-selectCategory(input){
+  componentDidMount(movieNumber){
+    let episode = Math.floor(Math.random() * (6))+1;
+    
+    fetch(`http://swapi.co/api/films/?/format=json`)
+    .then( resp => resp.json() )
+    .then( data => {
+      this.setState({
+        aboutMovie: [
+          data.results[episode].title,
+          data.results[episode].episode_id,
+          data.results[episode].opening_crawl
+        ]
+      })
+    }).catch( (e) => {
+      console.log(e);
+    })
+  }
 
-  fetch(`http://swapi.co/api/${input}/?format=json`)
-  .then( (resp) => resp.json() )
-  .then( (data) => {
-    this.setState({ category: data.results,
-                    categoryType: input,
-                    aboutMovie: })
-  }).catch( (e) => {
-    console.log(e);
-  })
-}
+  selectCategory(input){
+
+    fetch(`http://swapi.co/api/${input}/?format=json`)
+    .then( resp => resp.json() )
+    .then( data => {
+      this.setState({ category: data.results,
+                      categoryType: input,
+                      aboutMovie: this.state.aboutMovie })
+    }).catch( (e) => {
+      console.log(e);
+    })
+  }
 
   render() {
     return (
@@ -59,9 +77,6 @@ selectCategory(input){
           <AboutMovie movieSummary={this.state.aboutMovie} />
         </aside>
       </div>
-
-
-
     );
   }
 }
