@@ -14,7 +14,7 @@ componentDidMount(){
   fetch(`${this.props.data.homeworld}`)
   .then( (resp) => resp.json() )
   .then( (info) => {
-    
+
     this.setState({
       homeworld  : info.name,
       population : info.population

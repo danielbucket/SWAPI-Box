@@ -10,27 +10,23 @@ const CategoryDisplay = ({ presentCategory, typeCategory, selectedFavorites }) =
   let list;
   switch(typeCategory){
     case "people":
-     list = presentCategory.map(data=>{
-       return <People data={data}/>
+     list = presentCategory.map((data,i)=>{
+       return <People key ={i} data={data}/>
      })
      break;
 
     case 'planets':
-    list = presentCategory.map(data=>{
-      return <Planets data={data}/>
+    list = presentCategory.map((data,i)=>{
+      return <Planets key={i} data={data}/>
     })
     break;
 
 
     case 'vehicles':
-    list = presentCategory.map(data=>{
-      return <Vehicle data={data}/>
+    list = presentCategory.map((data,i) =>{
+      return <Vehicle key={i} data={data}/>
     })
     break;
-
-
-    default :
-    // alert("BAh!")
   }
 
 

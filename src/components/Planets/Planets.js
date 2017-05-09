@@ -12,18 +12,6 @@ class Planets extends Component {
   componentDidMount(){
     let residentList = []
 
-    fetch(`${this.props.data.homeworld}`)
-    .then( (resp) => resp.json() )
-    .then( (info) => {
-      this.setState({
-        homeworld  : info.name,
-        population : info.population
-      })
-    }).catch( (e) => {
-      console.log(e);
-    })
-
-
     this.props.data.residents.forEach(person => {
     fetch(`${person}`)
     .then( (resp) => resp.json() )
@@ -52,7 +40,7 @@ class Planets extends Component {
         <div className = "card-info">Climate: {this.props.data.climate}</div>
         <div className = "card-info">Residents:
         {
-        this.state.residents.map(i => <p>{i}</p>)
+        this.state.residents.map(i => <div>{i}</div>)
         }
         </div>
       </div>
