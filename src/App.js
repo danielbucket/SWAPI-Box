@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Favorites        from './components/favorites/Favorites';
-import CategorySelect   from './components/categorySelect/CategorySelect';
-import CategoryDisplay  from './components/categoryDisplay/CategoryDisplay';
-import AboutMovie       from './components/aboutMovie/AboutMovie.js';
+import Header from './components/header/Header';
+import CategorySelect from './components/categorySelect/CategorySelect';
+import CategoryDisplay from './components/categoryDisplay/CategoryDisplay';
+import AboutMovie from './components/aboutMovie/AboutMovie.js';
 
 
 class App extends Component {
@@ -18,7 +18,7 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
+  componentWillMount(){
     let episode = Math.floor(Math.random() * (6))+1;
 
     fetch(`http://swapi.co/api/films/?/format=json`)
@@ -31,20 +31,27 @@ class App extends Component {
           data.results[episode].opening_crawl
         ]
       })
-    }).catch( (e) => {
+    }).catch( e => {
       console.log(e);
     })
   }
 
   selectCategory(input){
+    let dataSource;
 
-    fetch(`http://swapi.co/api/${input}/?format=json`)
+    if (typeof input === 'string') {
+      dataSource = `http://swapi.co/api/${input}/?format=json`;
+    } else if (typeof input === 'number') {
+      dataSource = `http://swapi.co/api/films/${input}/?format=json`;
+    }
+
+    fetch(dataSource)
     .then( resp => resp.json() )
     .then( data => {
       this.setState({ category: data.results,
                       categoryType: input,
                       aboutMovie: this.state.aboutMovie })
-    }).catch( (e) => {
+    }).catch( e => {
       console.log(e);
     })
   }
@@ -53,31 +60,35 @@ class App extends Component {
     return (
       <div className="App">
 
-        <header className="header">
-          <h3>
-            Swapi-Box
-          </h3>
-          <Favorites favorites={ this.state.favorites } />
-        </header>
-
-        <section className="category-container">
-          <CategorySelect selectCategory={ this.selectCategory.bind(this) } />
+        <section className="left-side-screen">
+          <aside className="aside">
+             <AboutMovie
+               movieSummary={ this.state.aboutMovie }
+               selectCategory={ this.selectCategory.bind(this) }
+              />
+          </aside>
         </section>
 
-        <section className="category-display">
-          <p> Select A Category </p>
-          <CategoryDisplay
-             presentCategory={ this.state.category }
-             typeCategory={ this.state.categoryType }
-             selectedFavorites={ this.state.favorites } />
+        <section className="right-side-screen">
+            <Header
+              favorites={ this.state.favorites }
+            />
+          <div className="category-container">
+            <CategorySelect
+              selectCategory={ this.selectCategory.bind(this) }
+            />
+          </div>
+            <CategoryDisplay
+              selectedFavorites={ this.state.favorites }
+              presentCategory={ this.state.category }
+              typeCategory={ this.state.categoryType }
+            />
         </section>
 
-        <aside className="about-the-movie-aside">
-          <AboutMovie movieSummary={ this.state.aboutMovie } />
-        </aside>
       </div>
     );
   }
 }
+
 
 export default App;

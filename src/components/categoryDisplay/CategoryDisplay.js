@@ -1,6 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import style from './categoryDisplay.css'
 
 const CategoryDisplay = ({ presentCategory, typeCategory, selectedFavorites }) => {
+  
+  // not recieving any props...?
+  console.log('looking for props :', presentCategory);
+
   // if (typeCategory === "people") {
   //   list =
   // }
@@ -8,8 +13,8 @@ const CategoryDisplay = ({ presentCategory, typeCategory, selectedFavorites }) =
   //
 
   return (
-    <div>
-      { presentCategory }
+    <div className="category-display">
+      { presentCategory }some shtuff about Darth Skywalker and his posse
     </div>
   )
 }
