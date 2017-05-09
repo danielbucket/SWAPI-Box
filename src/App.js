@@ -3,7 +3,7 @@ import './App.css';
 
 import Favorites        from './components/favorites/Favorites';
 import CategorySelect   from './components/categorySelect/CategorySelect';
-// import CategoryDisplay  from './components/CategoryDisplay/CategoryDisplay';
+import CategoryDisplay  from './components/categoryDisplay/CategoryDisplay';
 import AboutMovie       from './components/aboutMovie/AboutMovie.js';
 
 
@@ -18,9 +18,9 @@ class App extends Component {
     }
   }
 
-  componentDidMount(movieNumber){
+  componentDidMount(){
     let episode = Math.floor(Math.random() * (6))+1;
-    
+
     fetch(`http://swapi.co/api/films/?/format=json`)
     .then( resp => resp.json() )
     .then( data => {
@@ -57,24 +57,23 @@ class App extends Component {
           <h3>
             Swapi-Box
           </h3>
-          <Favorites favorites={this.state.favorites}/>
+          <Favorites favorites={ this.state.favorites } />
         </header>
 
         <section className="category-container">
-          <CategorySelect selectCategory={this.selectCategory.bind(this)}/>
+          <CategorySelect selectCategory={ this.selectCategory.bind(this) } />
         </section>
 
         <section className="category-display">
           <p> Select A Category </p>
-          {/* <CategoryDisplay */}
-             {/* presentCategory={this.state.category} */}
-             {/* typeCategory={this.state.categoryType} */}
-             {/* selectedFavorites={this.state.favorites} */}
-           {/* /> */}
+          <CategoryDisplay
+             presentCategory={ this.state.category }
+             typeCategory={ this.state.categoryType }
+             selectedFavorites={ this.state.favorites } />
         </section>
 
         <aside className="about-the-movie-aside">
-          <AboutMovie movieSummary={this.state.aboutMovie} />
+          <AboutMovie movieSummary={ this.state.aboutMovie } />
         </aside>
       </div>
     );

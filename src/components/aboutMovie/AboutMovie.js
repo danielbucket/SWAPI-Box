@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 const AboutMovie = ({ movieSummary }) => {
-  console.log({movieSummary});
+  
   return (
     <div className="about-movie-container">
       <title className="movieTitle">
@@ -14,9 +14,5 @@ const AboutMovie = ({ movieSummary }) => {
     </div>
   )
 }
-
-// AboutMovie.propTypes = {
-//   movieSummary: propTypes.string
-// }
 
 export default AboutMovie;
