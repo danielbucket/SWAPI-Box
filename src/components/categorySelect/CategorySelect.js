@@ -1,25 +1,26 @@
 import React from 'react';
+import style from './categorySelect.css'
 
 
-const CategorySelect = ({selectCategory}) => {
-
+const CategorySelect = ({selectCategory,activeButton}) => {
     return (
     <div>
-      <button onClick={ () => { selectCategory('people') }}>
+      <button className={activeButton==='people'?"active":"not-active"} onClick={ () => { selectCategory('people') }}>
         People
       </button>
 
-      <button onClick={ () => { selectCategory('planets') }}>
+      <button className={activeButton==='planets'?"active":"not-active"} onClick={ () => { selectCategory('planets') }}>
         Planets
       </button>
 
-      <button onClick={ () => { selectCategory('vehicles') }}>
+      <button className={activeButton==='vehicles'?"active":"not-active"} onClick={ () => { selectCategory('vehicles') }}>
         Vehicles
       </button>
     </div>
-
     )
+  }
 
-}
+
+
 
 export default CategorySelect;

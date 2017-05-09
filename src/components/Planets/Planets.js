@@ -30,15 +30,18 @@ class Planets extends Component {
 
   render(){
   return(
-    <article className = "card">
+    <article className = {this.props.isFavorite}>
       <div className = "card-title">
-        {this.props.data.name} <div className = "favorites-btn"></div>
+        {this.props.data.name}
+        <div
+        onClick={()=>{this.props.selectedFavorites(this.props.data.name)}}
+         className = {this.props.isFavorite+"-button"}></div>
       </div>
       <div className = "card-info-container">
-        <div className = "card-info">Terrain: {this.props.data.terrain}</div>
-        <div className = "card-info">Population: {this.props.data.population}</div>
-        <div className = "card-info">Climate: {this.props.data.climate}</div>
-        <div className = "card-info">Residents:
+        <div className = "card-info"><span className="info-cat">Terrain:</span> {this.props.data.terrain}</div>
+        <div className = "card-info"><span className="info-cat">Population:</span> {this.props.data.population}</div>
+        <div className = "card-info"><span className="info-cat">Climate:</span> {this.props.data.climate}</div>
+        <div className = "card-info"><span className="info-cat">Residents:</span>
         {
         this.state.residents.map(i => <div>{i}</div>)
         }

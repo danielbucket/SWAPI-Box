@@ -1,16 +1,19 @@
 import React from 'react'
 
-const Vehicle = ({data})=>{
+const Vehicle = ({data,isFavorite,selectedFavorites})=>{
 
   return(
-    <article className = "card">
+    <article className = {isFavorite}>
       <div className = "card-title">
-        {data.name} <div className = "favorites-btn"></div>
+        {data.name}
+        <div
+        onClick={()=>{selectedFavorites(data.name)}}
+         className = {isFavorite+"-button"}></div>
       </div>
       <div className = "card-info-container">
-        <div className = "card-info">Model: {data.model}</div>
-        <div className = "card-info">Class: {data.vehicle_class}</div>
-        <div className = "card-info">Passengers: {data.passengers}</div>
+        <div className = "card-info"><span className="info-cat">Model:</span> {data.model}</div>
+        <div className = "card-info"><span className="info-cat">Class:</span> {data.vehicle_class}</div>
+        <div className = "card-info"><span className="info-cat">Passengers:</span>{data.passengers}</div>
       </div>
     </article>
   )
