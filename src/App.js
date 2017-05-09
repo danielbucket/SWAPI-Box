@@ -18,7 +18,7 @@ class App extends Component {
     }
   }
 
-  componentDidMount(){
+  componentWillMount(){
     let episode = Math.floor(Math.random() * (6))+1;
 
     fetch(`http://swapi.co/api/films/?/format=json`)
@@ -31,20 +31,27 @@ class App extends Component {
           data.results[episode].opening_crawl
         ]
       })
-    }).catch( (e) => {
+    }).catch( e => {
       console.log(e);
     })
   }
 
   selectCategory(input){
+    let dataSource;
 
-    fetch(`http://swapi.co/api/${input}/?format=json`)
+    if (typeof input === 'string') {
+      dataSource = `http://swapi.co/api/${input}/?format=json`
+    } else {
+      dataSource = `http://swapi.co/api/films/${input}/?format=json`
+    }
+
+    fetch(dataSource)
     .then( resp => resp.json() )
     .then( data => {
       this.setState({ category: data.results,
                       categoryType: input,
                       aboutMovie: this.state.aboutMovie })
-    }).catch( (e) => {
+    }).catch( e => {
       console.log(e);
     })
   }
@@ -57,23 +64,30 @@ class App extends Component {
           <h3>
             Swapi-Box
           </h3>
-          <Favorites favorites={ this.state.favorites } />
+          <Favorites
+            favorites={ this.state.favorites }
+          />
         </header>
 
         <section className="category-container">
-          <CategorySelect selectCategory={ this.selectCategory.bind(this) } />
+          <CategorySelect
+            selectCategory={ this.selectCategory.bind(this) }
+          />
         </section>
 
         <section className="category-display">
-          <p> Select A Category </p>
           <CategoryDisplay
+            selectedFavorites={ this.state.favorites }
              presentCategory={ this.state.category }
              typeCategory={ this.state.categoryType }
-             selectedFavorites={ this.state.favorites } />
+          />
         </section>
 
         <aside className="about-the-movie-aside">
-          <AboutMovie movieSummary={ this.state.aboutMovie } />
+           <AboutMovie
+             movieSummary={ this.state.aboutMovie }
+             selectCategory={ this.selectCategory.bind(this) }
+            />
         </aside>
       </div>
     );
