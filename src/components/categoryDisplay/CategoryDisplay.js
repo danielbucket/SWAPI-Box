@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import style from './categoryDisplay.css'
 
 import People from '../Person/Person'
 
@@ -30,10 +31,16 @@ const CategoryDisplay = ({ presentCategory, typeCategory, selectedFavorites }) =
   }
 
 
+  // if (typeCategory === "people") {
+  //   list =
+  // }
+  //   list =
+  //
 
   return (
     <div>
     {list}
+
     </div>
   )
 }

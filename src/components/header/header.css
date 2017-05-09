@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Electrolize|Russo+One');
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(rgba(0, 0, 0, 0.24), white);
+}
+
+.website-name {
+  width: 30%;
+  font-family: 'Electrolize', sans-serif;
+  font-size: 30px;
+  text-decoration: none;
+  text-shadow: 2px 2px 20px #fec82f;
+  color: black;
+}
+
+.movie-name-and-header-container {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+.movie-name-and-header-container h2 {
+  text-decoration: none;
+}
+
+.movie-title-box {
+  font-family: 'Russo One', sans-serif;
+  font-size: 30px;
+}
+
+.header-box {
+  width: 25%;
+}
