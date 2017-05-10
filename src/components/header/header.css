@@ -34,11 +34,11 @@
   width: 25%;
 }
 
-.header li{
+.header li {
   list-style-type: none;
 }
 
-.isActive{
+.isActive {
   :yellow;
 }
 

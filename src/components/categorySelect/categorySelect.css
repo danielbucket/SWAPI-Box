@@ -1,15 +1,28 @@
-.not-active, .active{
+@import url('https://fonts.googleapis.com/css?family=Russo+One|Glegoo');
+
+.category-select {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #d8d8da;
+}
+
+.not-active, .active {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
   background: aliceblue;
-  border: none;
   width: 130px;
   border: 1px black solid;
+  border-radius: 5px;
   height: 50px;
+  font-family: 'Glegoo', sans-serif;
+  font-size: 14px;
 }
 
-.not-active{
+.not-active {
   background: aliceblue;
 }
 
-.active{
+.active {
   background-color: #fecb32
 }

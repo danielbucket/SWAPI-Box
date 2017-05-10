@@ -2,13 +2,11 @@ import React    from 'react';
 import People   from '../Person/Person';
 import Planets  from '../Planets/Planets';
 import Vehicle  from '../Vehicle/Vehicle';
-import './categoryDisplay.css';
+import               './categoryDisplay.css';
 
 const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary }) => {
   let list;
   let isFavorite;
-
-  // console.log(movieSummary);
 
   switch(typeCategory) {
 
@@ -27,8 +25,8 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
     case 'planets':
     list = presentCategory.map( (data, i) => {
       isFavorite = favorites.indexOf(data.name) > -1
-                                                 ? "favorite"
-                                                 : "not-favorite"
+                                                ? "favorite"
+                                                : "not-favorite"
       return <Planets isFavorite={ isFavorite }
                       selectedFavorites={ selectedFavorites }
                       key={ i }

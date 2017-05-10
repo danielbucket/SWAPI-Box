@@ -27,22 +27,23 @@ class App extends Component {
       this.setState({
         defaultAboutMovie: data.results[episode]
       });
-      console.log(this.state);
     }).catch( e => {
       console.log(e)
     })
   };
 
   selectFavorite(input) {
-    let tempFav  = this.state.favorites
+    let tempFav  = this.state.favorites;
+
+
     let position = tempFav.indexOf(input)
-    position <= -1 ? tempFav.push(input) : tempFav.splice(position, 1)
-    this.setState({ favorites: tempFav })
+    position <= -1
+      ? tempFav.push(input)
+      : tempFav.splice(position, 1)
+        this.setState({ favorites: tempFav })
   };
 
   selectCategory(input) {
-    console.log(input);
-
     let dataSource;
     //is this the best time to setState()? I'm concerned about rerendering
     this.setState({ activeButton: input })
@@ -87,7 +88,7 @@ class App extends Component {
                               selectedFavorites={ this.selectFavorite.bind(this) }
                               presentCategory={ this.state.category }
                               typeCategory={ this.state.categoryType }
-                              movieSummary={ this.state.aaboutMovie } />
+                              movieSummary={ this.state.aboutMovie } />
         </section>
       </div>
     );
