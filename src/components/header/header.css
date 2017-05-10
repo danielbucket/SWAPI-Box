@@ -4,10 +4,11 @@
   display: flex;
   justify-content: space-between;
   background: linear-gradient(rgba(0, 0, 0, 0.24), white);
+  height: 150px;
 }
 
 .website-name {
-  width: 30%;
+  width: 50%;
   font-family: 'Electrolize', sans-serif;
   font-size: 30px;
   text-decoration: none;
@@ -15,33 +16,51 @@
   color: black;
 }
 
-.movie-name-and-header-container {
+.favorites-container {
   display: flex;
   justify-content: center;
-  width: 70%;
-}
-
-.movie-name-and-header-container h2 {
-  text-decoration: none;
-}
-
-.movie-title-box {
-  font-family: 'Russo One', sans-serif;
-  font-size: 30px;
+  width: 50%;
+  /*border: 2px dashed magenta;*/
 }
 
 .header-box {
-  width: 25%;
+  width: 90%;
+  height: 95%;
 }
 
-.header li{
+.header li {
   list-style-type: none;
+  text-align: left;
 }
 
-.isActive{
+.isActive {
   :yellow;
 }
 
 .isInactive{
   color:#000
+}
+
+.favorites-title {
+  font-family: 'Electrolize', sans-serif;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.favorites-title span {
+  margin-left: 4px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.list-container {
+  overflow-y: scroll;
+  height: 80px;
+  /*border: 2px dashed black;*/
+}
+
+.favorites-list {
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
 }

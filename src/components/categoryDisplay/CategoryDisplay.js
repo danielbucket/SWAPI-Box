@@ -1,19 +1,20 @@
-import React    from 'react';
-import People   from '../Person/Person';
-import Planets  from '../Planets/Planets';
-import Vehicle  from '../Vehicle/Vehicle';
+import React        from 'react';
+import People       from '../Person/Person';
+import Planets      from '../Planets/Planets';
+import Vehicle      from '../Vehicle/Vehicle';
 import MovieDetails from '../MovieDetails/MovieDetails.js'
 import './categoryDisplay.css';
 import PropTypes from 'prop-types';
+
 
 
 const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary,displayMovieInfo }) => {
   let list;
   let isFavorite;
 
-if(displayMovieInfo){
-  list = <MovieDetails movieSummary ={movieSummary}/>
-}else{
+if (displayMovieInfo){
+  list = <MovieDetails movieSummary={ movieSummary } />
+} else {
   switch(typeCategory) {
 
     case "people":
@@ -31,8 +32,8 @@ if(displayMovieInfo){
     case 'planets':
     list = presentCategory.map( (data, i) => {
       isFavorite = favorites.indexOf(data.name) > -1
-                                                 ? "favorite"
-                                                 : "not-favorite"
+                                                ? "favorite"
+                                                : "not-favorite"
       return <Planets isFavorite={ isFavorite }
                       selectedFavorites={ selectedFavorites }
                       key={ i }

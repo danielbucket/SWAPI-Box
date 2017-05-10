@@ -31,17 +31,20 @@ class App extends Component {
       this.setState({
         defaultAboutMovie: data.results[episode]
       });
-      console.log(this.state);
     }).catch( e => {
       console.log(e)
     })
   };
 
   selectFavorite(input) {
-    let tempFav  = this.state.favorites
+    let tempFav  = this.state.favorites;
+
+
     let position = tempFav.indexOf(input)
-    position <= -1 ? tempFav.push(input) : tempFav.splice(position, 1)
-    this.setState({ favorites: tempFav })
+    position <= -1
+      ? tempFav.push(input)
+      : tempFav.splice(position, 1)
+        this.setState({ favorites: tempFav })
   };
 
   selectCategory(input) {
@@ -88,8 +91,7 @@ class App extends Component {
             <CategorySelect activeButton={ this.state.activeButton }
                             selectCategory={ this.selectCategory.bind(this) } />
           </div>
-            <CategoryDisplay
-                              displayMovieInfo = {this.state.displayMovieInfo}
+            <CategoryDisplay  displayMovieInfo={ this.state.displayMovieInfo }
                               favorites={ this.state.favorites }
                               selectedFavorites={ this.selectFavorite.bind(this) }
                               presentCategory={ this.state.category }

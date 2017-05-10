@@ -3,6 +3,7 @@ import style from './header.css';
 import PropTypes from 'prop-types';
 
 
+
 class Header extends Component {
   constructor(){
     super()
@@ -13,10 +14,10 @@ class Header extends Component {
 
 
   render(){
-    let active = this.state.hasBeenClicked?"isActive":"isInactive"
-    let list = this.state.hasBeenClicked? this.props.favorites.map(i=>{
-      return <li>{i}</li>
-    }):""
+    let active = this.state.hasBeenClicked ? "isActive" : "isInactive"
+    let list = this.state.hasBeenClicked
+               ? this.props.favorites.map( i => { return <li>{ i }</li> })
+               : ""
 
 
   return (
@@ -29,23 +30,24 @@ class Header extends Component {
         </h2>
       </a>
 
-      <div className="movie-name-and-header-container">
+      <div className="favorites-container">
 
-        <div className="header-box"
-          onClick={ () => {this.setState({hasBeenClicked:!this.state.hasBeenClicked})}}
-             >
-             <div className = {active}>
-          Favorites:{this.props.favorites.length}
-            <ul>
-            {list}
-            </ul>
+        <div  className="header-box"
+              onClick={ () => { this.setState({ hasBeenClicked: !this.state.hasBeenClicked }) } }>
+             <div className={ active }>
+              <p className="favorites-title">Favorites:<span>{ this.props.favorites.length }</span></p>
+              <div className="list-container">
+                <ul className="favorites-list">
+                { list }
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
-      </div>
-    </header>
-  )
+      </header>
+    )
   }
-}
+};
 
 Header.PropTypes = {
   favorites:PropTypes.array  
