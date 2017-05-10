@@ -29,9 +29,7 @@ class Header extends Component {
       </a>
 
       <div className="movie-name-and-header-container">
-        <h3 className="movie-title-box">
-          { movieSummary.title }
-        </h3>
+
         <div className="header-box"
           onClick={ () => {this.setState({hasBeenClicked:!this.state.hasBeenClicked})}}
              >
