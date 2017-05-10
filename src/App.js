@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-
 import Header from './components/header/Header';
 import CategorySelect from './components/categorySelect/CategorySelect';
 import CategoryDisplay from './components/categoryDisplay/CategoryDisplay';
 import AboutMovie from './components/aboutMovie/AboutMovie.js';
-
-
 class App extends Component {
   constructor() {
     super()
     this.state = {
-
+      data:"",
       favorites: [],
       category: [],
       categoryType: "",
@@ -22,6 +19,10 @@ class App extends Component {
 
   componentWillMount(){
     let episode = Math.floor(Math.random() * (6))+1;
+    console.log(people())
+    console.log(planets)
+    console.log(species())
+    console.log(vehicle)
 
     fetch(`http://swapi.co/api/films/?/format=json`)
     .then( resp => resp.json() )
@@ -66,6 +67,8 @@ class App extends Component {
     }).catch( e => {
       console.log(e);
     })
+
+
   }
 
   render() {

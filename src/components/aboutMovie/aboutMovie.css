@@ -11,6 +11,7 @@
 .star-wars-logo {
   background: url("./img/star-wars-logo.png") no-repeat center;
   height: 150px;
+  background-size: contain;
 }
 
 .movie-title {
