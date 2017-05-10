@@ -19,10 +19,6 @@ class App extends Component {
 
   componentWillMount(){
     let episode = Math.floor(Math.random() * (6))+1;
-    console.log(people())
-    console.log(planets)
-    console.log(species())
-    console.log(vehicle)
 
     fetch(`http://swapi.co/api/films/?/format=json`)
     .then( resp => resp.json() )
