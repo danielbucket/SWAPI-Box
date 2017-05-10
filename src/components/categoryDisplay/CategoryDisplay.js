@@ -3,7 +3,10 @@ import People       from '../Person/Person';
 import Planets      from '../Planets/Planets';
 import Vehicle      from '../Vehicle/Vehicle';
 import MovieDetails from '../MovieDetails/MovieDetails.js'
-import                   './categoryDisplay.css';
+import './categoryDisplay.css';
+import PropTypes from 'prop-types';
+
+
 
 const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary,displayMovieInfo }) => {
   let list;
@@ -59,5 +62,16 @@ if (displayMovieInfo){
     </div>
   );
 };
+
+CategoryDisplay.PropTypes = {
+  isFavorite        : PropTypes.string,
+  presentCategory   : PropTypes.array,
+  selectedFavorites : PropTypes.func,
+  favorites         : PropTypes.array,
+  typeCategory      : PropTypes.string,
+  selectedFavorites : PropTypes.func,
+  movieSummary      : PropTypes.obj,
+  displayMovieInfo  : PropTypes.bool
+}
 
 export default CategoryDisplay;
