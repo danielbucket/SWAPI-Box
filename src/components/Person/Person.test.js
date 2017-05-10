@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Person from './Person';
-import {mount,shallow} from 'enzyme'
+import { mount, shallow } from 'enzyme';
 
-describe('Person test',()=>{
+describe('Person test',() => {
   const wrapper =mount(<Person
                         isFavorite = "favorite"
                         data= {{name:'han',homeworld:"Naboo",species:["human"] }}
@@ -17,7 +17,7 @@ describe('Person test',()=>{
       />, div);
   });
 
-  it('should have a class',()=>{
+  it('should have a class',() => {
     expect(wrapper.hasClass('favorite')).toEqual(true)
   })
 
@@ -31,12 +31,12 @@ describe('Person test',()=>{
     expect(newWrapper.hasClass('not-favorite')).toEqual(true)
   })
 
-  it('should contain elements',()=>{
+  it('should contain elements',() => {
     expect(wrapper.find('div').length).toEqual(6)
 
   })
 
-  it('should have a default state',()=>{
+  it('should have a default state',() => {
     let expected ={
       homeworld : "",
       species   : "",

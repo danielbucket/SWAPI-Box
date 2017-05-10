@@ -3,6 +3,7 @@ import Header               from './components/header/Header';
 import CategorySelect       from './components/categorySelect/CategorySelect';
 import CategoryDisplay      from './components/categoryDisplay/CategoryDisplay';
 import AboutMovie           from './components/aboutMovie/AboutMovie.js';
+
 import './App.css';
 
 class App extends Component {
@@ -13,27 +14,21 @@ class App extends Component {
       category: [],
       categoryType: "",
       aboutMovie: "",
+      defaultAboutMovie: "",
       activeButton: ""
     };
   };
 
   componentWillMount(){
     let episode = Math.floor(Math.random() * (6))+1;
-    console.log(people())
-    console.log(planets)
-    console.log(species())
-    console.log(vehicle)
 
     fetch(`http://swapi.co/api/films/?/format=json`)
     .then( resp => resp.json() )
     .then( data => {
       this.setState({
-        aboutMovie: [
-          data.results[episode].title,
-          data.results[episode].episode_id,
-          data.results[episode].opening_crawl
-        ]
+        defaultAboutMovie: data.results[episode]
       });
+      console.log(this.state);
     }).catch( e => {
       console.log(e)
     })
@@ -42,12 +37,13 @@ class App extends Component {
   selectFavorite(input) {
     let tempFav  = this.state.favorites
     let position = tempFav.indexOf(input)
-
     position <= -1 ? tempFav.push(input) : tempFav.splice(position, 1)
     this.setState({ favorites: tempFav })
   };
 
   selectCategory(input) {
+    console.log(input);
+
     let dataSource;
     //is this the best time to setState()? I'm concerned about rerendering
     this.setState({ activeButton: input })
@@ -65,13 +61,11 @@ class App extends Component {
     .then( data => {
       this.setState({ category: data.results,
                   categoryType: input,
-                    aboutMovie: this.state.aboutMovie
+                    aboutMovie: this.state.defaultAboutMovie
                   });
-                  console.log(this.state)
     }).catch( e => {
       console.log(e)
     })
-
 
   }
   render() {
@@ -79,12 +73,13 @@ class App extends Component {
       <div className="App">
         <section className="left-side-screen">
           <aside className="aside">
-             <AboutMovie  movieSummary={ this.state.aboutMovie }
+             <AboutMovie  movieSummary={ this.state.defaultAboutMovie }
                           selectCategory={ this.selectCategory.bind(this) } />
           </aside>
         </section>
         <section className="right-side-screen">
-            <Header favorites={ this.state.favorites} />
+            <Header favorites={ this.state.favorites}
+                    movieSummary={ this.state.aboutMovie } />
           <div className="category-container">
             <CategorySelect activeButton={ this.state.activeButton }
                             selectCategory={ this.selectCategory.bind(this) } />
@@ -92,7 +87,8 @@ class App extends Component {
             <CategoryDisplay  favorites={ this.state.favorites }
                               selectedFavorites={ this.selectFavorite.bind(this) }
                               presentCategory={ this.state.category }
-                              typeCategory={ this.state.categoryType } />
+                              typeCategory={ this.state.categoryType }
+                              movieSummary={ this.state.aaboutMovie } />
         </section>
       </div>
     );
