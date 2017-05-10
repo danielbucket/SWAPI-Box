@@ -14,7 +14,8 @@ class App extends Component {
       categoryType: "",
       aboutMovie: "",
       defaultAboutMovie: "",
-      activeButton: ""
+      activeButton: "",
+      displayMovieInfo: false
     };
   };
 
@@ -50,10 +51,13 @@ class App extends Component {
 
     if (typeof input === 'string') {
       dataSource = `http://swapi.co/api/${input}/?format=json`;
+      this.setState({displayMovieInfo:false})
     }
 
     if (typeof input === 'number') {
       dataSource = `http://swapi.co/api/films/${input}/?format=json`;
+      this.setState({displayMovieInfo:true})
+
     }
 
     fetch(dataSource)
@@ -84,7 +88,8 @@ class App extends Component {
             <CategorySelect activeButton={ this.state.activeButton }
                             selectCategory={ this.selectCategory.bind(this) } />
           </div>
-            <CategoryDisplay  favorites={ this.state.favorites }
+            <CategoryDisplay  displayMovieInfo={ this.state.displayMovieInfo }
+                              favorites={ this.state.favorites }
                               selectedFavorites={ this.selectFavorite.bind(this) }
                               presentCategory={ this.state.category }
                               typeCategory={ this.state.categoryType }

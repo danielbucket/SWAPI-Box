@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {mount,shallow} from 'enzyme'
+import fetchMock from 'fetch-mock'
 
 describe('App test',()=>{
 
@@ -37,7 +38,7 @@ describe('App test',()=>{
 
   it('can change its state',()=>{
     const wrapper = mount(<App/>)
-    
+
 
   })
 

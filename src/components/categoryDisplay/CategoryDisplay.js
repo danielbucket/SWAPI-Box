@@ -1,13 +1,17 @@
-import React    from 'react';
-import People   from '../Person/Person';
-import Planets  from '../Planets/Planets';
-import Vehicle  from '../Vehicle/Vehicle';
-import               './categoryDisplay.css';
+import React        from 'react';
+import People       from '../Person/Person';
+import Planets      from '../Planets/Planets';
+import Vehicle      from '../Vehicle/Vehicle';
+import MovieDetails from '../MovieDetails/MovieDetails.js'
+import                   './categoryDisplay.css';
 
-const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary }) => {
+const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary,displayMovieInfo }) => {
   let list;
   let isFavorite;
 
+if (displayMovieInfo){
+  list = <MovieDetails movieSummary={ movieSummary } />
+} else {
   switch(typeCategory) {
 
     case "people":
@@ -48,7 +52,7 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
     default:
     console.log("CategoryDisplay has revieved no props");
   };
-
+}
   return (
     <div className='category-display'>
       { list }
