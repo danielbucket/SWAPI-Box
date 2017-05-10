@@ -5,51 +5,50 @@
   width: 100%;
 }
 
-
-.favorite, .not-favorite{
-      padding: 5px;
-      width:190px;
-      margin: 10px;
-      border-radius: 15px;
-      font-weight: 300;
-    }
-
-.not-favorite{
-  box-shadow: 1px 1px 20px 2px  #D8D8DA;
-
+.favorite, .not-favorite {
+  border: 1px solid green;
+  padding: 5px;
+  width:190px;
+  margin: 10px;
+  border-radius: 15px;
+  font-weight: 300;
 }
 
-.favorite{
+.not-favorite {
+  box-shadow: 1px 1px 20px 2px  #D8D8DA;
+}
+
+.favorite {
   box-shadow: 1px 1px 20px 2px  #fecb32;
 }
 
-.not-favorite-button, .favorite-button{
+.not-favorite-button, .favorite-button {
   background-size: cover;
   background-repeat: none;
   width:20px;
   height:20px;
 }
 
-.not-favorite-button{
-    background-image: url('../../icon/starBlack.png')
+.not-favorite-button {
+  background-image: url('../../icon/starBlack.png');
 }
 
-.favorite-button{
-    background-image: url('../../icon/starGold.png');
+.favorite-button {
+  background-image: url('../../icon/starGold.png');
 }
 
-.info-cat{
+.info-cat {
   color:red;
   margin-right: 5px;
 }
 
-.card-title{
+.card-title {
   display:flex;
   justify-content: space-around;
   font-weight:500;
 }
 
-.card-info{
+.card-info  {
   display: flex;
   overflow-x: scroll;
 }

@@ -4,11 +4,14 @@ import Planets  from '../Planets/Planets';
 import Vehicle  from '../Vehicle/Vehicle';
 import './categoryDisplay.css';
 
-const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites}) => {
+const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary }) => {
   let list;
   let isFavorite;
 
+  // console.log(movieSummary);
+
   switch(typeCategory) {
+
     case "people":
      list = presentCategory.map( (data, i) => {
       isFavorite = favorites.indexOf(data.name) > -1
@@ -35,7 +38,7 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
 
     case 'vehicles':
     list = presentCategory.map( (data, i) => {
-      isFavorite=  favorites.indexOf(data.name) > -1
+      isFavorite = favorites.indexOf(data.name) > -1
                                                 ? "favorite"
                                                 : "not-favorite"
       return <Vehicle isFavorite={ isFavorite }

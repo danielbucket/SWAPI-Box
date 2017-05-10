@@ -17,6 +17,7 @@ class Header extends Component {
       return <li>{i}</li>
     }):""
 
+
   return (
     <header className="header">
       <a className="website-name"
@@ -29,7 +30,7 @@ class Header extends Component {
 
       <div className="movie-name-and-header-container">
         <h3 className="movie-title-box">
-          {/* movie name Object  */} PlaceHolder Movie Title
+          { movieSummary.title }
         </h3>
         <div className="header-box"
           onClick={ () => {this.setState({hasBeenClicked:!this.state.hasBeenClicked})}}

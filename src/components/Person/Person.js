@@ -14,7 +14,6 @@ class Person extends Component {
     let p1 = fetch(`${this.props.data.homeworld}`)
     .then( resp => resp.json() )
     .then( info => {
-
       this.setState({
           homeworld: info.name,
          population: info.population
@@ -24,7 +23,7 @@ class Person extends Component {
       console.log(e)
     })
 
-    let p2 =fetch(`${this.props.data.species[0]}`)
+    let p2 = fetch(`${this.props.data.species[0]}`)
     .then( resp => resp.json() )
     .then( info => {
       this.setState({
@@ -35,7 +34,7 @@ class Person extends Component {
       console.log(e)
     });
 
-    Promise.all([p1,p2])
+    Promise.all([p1, p2])
   };
 
   render() {
