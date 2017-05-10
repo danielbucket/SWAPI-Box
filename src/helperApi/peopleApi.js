@@ -20,7 +20,7 @@ const personScrubber = () => {
    }, [])
  }).then((listOfPeople) => {
    return listOfPeople
- })
+ }).catch((e) => console.log(e))
 }
 
 const apiCall = (address) => {

@@ -17,7 +17,7 @@ const planetsScrubber = () => {
    }, [])
  }).then((listOfPlanets) => {
    return listOfPlanets
- })
+ }).catch((e) => console.log(e))
 }
 
 const apiCall = (address) => {

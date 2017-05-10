@@ -45,4 +45,14 @@ describe('Person test',() => {
     expect(wrapper.state()).toEqual(expected)
   })
 
+  it('should regonize a click for favorites',()=>{
+  const spy     = jest.fn()
+  const wrapper = mount(<Person
+            isFavorite ="not-favorite"
+            data= {{name:'han',homeworld:"Naboo",species:["human"]}}
+            selectedFavorites = {spy}
+            />)
+    expect(spy).toBeCalled()
+  })
+
 })
