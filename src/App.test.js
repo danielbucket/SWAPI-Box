@@ -3,8 +3,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {mount,shallow} from 'enzyme'
 import fetchMock from 'fetch-mock'
+import fakeData  from './App-test-helper.js'
+
 
 describe('App test',()=>{
+
+  afterEach(() => {
+    expect(fetchMock.calls().unmatched).toEqual([]);
+    fetchMock.restore()
+  });
 
   it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -31,14 +38,27 @@ describe('App test',()=>{
       category: [],
       categoryType: '',
       aboutMovie: '',
-      activeButton: '' }
+      activeButton: '',
+      defaultAboutMovie: "",
+      displayMovieInfo: false}
 
     expect(wrapper.state()).toEqual(expected)
   })
 
   it('can change its state',()=>{
-    const wrapper = mount(<App/>)
+    fetchMock(dataSource)
+    .then( resp => resp.json() )
+    .then( data => {
+      this.setState({ category: data.results,
+                  categoryType: input,
+                    aboutMovie: this.state.defaultAboutMovie
+                  });
+    }).catch( e => {
+      console.log(e)
+    })
 
+    const wrapper = mount(<App/>)
+    console.log(wrapper.state())
 
   })
 

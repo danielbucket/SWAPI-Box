@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Person extends Component {
   constructor() {
@@ -64,7 +65,11 @@ class Person extends Component {
       </article>
     );
   };
-
 };
+Person.PropTypes = {
+  isFavorite:PropTypes.string,
+  data: PropTypes.object,
+  selectedFavorites: PropTypes.func
+}
 
 export default Person;

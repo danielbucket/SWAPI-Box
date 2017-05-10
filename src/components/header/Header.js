@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import style from './header.css';
+import PropTypes from 'prop-types';
 
 
 class Header extends Component {
@@ -44,6 +45,10 @@ class Header extends Component {
     </header>
   )
   }
+}
+
+Header.PropTypes = {
+  favorites:PropTypes.array  
 }
 
 export default Header

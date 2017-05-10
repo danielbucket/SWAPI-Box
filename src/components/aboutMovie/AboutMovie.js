@@ -1,5 +1,6 @@
 import React from 'react';
 import './aboutMovie.css';
+import PropTypes from 'prop-types';
 
 const AboutMovie = ({ movieSummary, selectCategory }) => {
   return (
@@ -19,5 +20,10 @@ const AboutMovie = ({ movieSummary, selectCategory }) => {
     </div>
   );
 };
+
+AboutMovie.PropTypes = {
+  movieSummary: PropTypes.object,
+  selectCategory: PropTypes.func
+}
 
 export default AboutMovie;

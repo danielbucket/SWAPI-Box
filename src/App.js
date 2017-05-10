@@ -5,6 +5,7 @@ import CategoryDisplay      from './components/categoryDisplay/CategoryDisplay';
 import AboutMovie           from './components/aboutMovie/AboutMovie.js';
 import './App.css';
 
+
 class App extends Component {
   constructor() {
     super()
@@ -18,6 +19,8 @@ class App extends Component {
       displayMovieInfo: false
     };
   };
+
+
 
   componentWillMount(){
     let episode = Math.floor(Math.random() * (6))+1;
@@ -42,10 +45,8 @@ class App extends Component {
   };
 
   selectCategory(input) {
-    console.log(input);
 
     let dataSource;
-    //is this the best time to setState()? I'm concerned about rerendering
     this.setState({ activeButton: input })
 
     if (typeof input === 'string') {
@@ -99,6 +100,5 @@ class App extends Component {
     );
   };
 };
-
 
 export default App;

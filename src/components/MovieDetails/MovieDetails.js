@@ -1,5 +1,6 @@
 import React from 'react'
 import './MovieDetails.css'
+import PropTypes from 'prop-types';
 
 const MovieDetails = ({movieSummary})=>{
   return(
@@ -24,6 +25,9 @@ const MovieDetails = ({movieSummary})=>{
 
 }
 
+MovieDetails.PropTypes = {
+  movieSummary: PropTypes.object,
+}
 
 
 export default MovieDetails
