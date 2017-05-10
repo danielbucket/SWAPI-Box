@@ -8,15 +8,30 @@ import fakeData  from './App-test-helper.js'
 
 describe('App test',()=>{
 
+  let testP = new Promise((resolve, reject) => {
+      setTimeout(function(){
+        resolve("Success!");
+        reject("GRRR")
+
+      }, 2000)
+      })
+
+  beforeEach(()=>{
+  fetchMock.get('http://swapi.co/api/films/?/format=json', {
+    status: 200,
+    body: fakeData
+})
+})
+
   afterEach(() => {
     expect(fetchMock.calls().unmatched).toEqual([]);
     fetchMock.restore()
   });
-
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-  });
+  //
+  // it('renders without crashing', () => {
+  //   const div = document.createElement('div');
+  //   ReactDOM.render(<App />, div);
+  // });
 
   it('has a class',()=>{
     const wrapper = shallow(<App/>)
@@ -45,20 +60,19 @@ describe('App test',()=>{
     expect(wrapper.state()).toEqual(expected)
   })
 
-  it('can change its state',()=>{
-    fetchMock(dataSource)
-    .then( resp => resp.json() )
-    .then( data => {
-      this.setState({ category: data.results,
-                  categoryType: input,
-                    aboutMovie: this.state.defaultAboutMovie
-                  });
-    }).catch( e => {
-      console.log(e)
+  it.only('can change its state', async ()=>{
+    fetchMock.get('http://swapi.co/api/films/?/format=json', {
+      status: 200,
+      body: fakeData
     })
 
     const wrapper = mount(<App/>)
-    console.log(wrapper.state())
+
+    await testP
+
+     wrapper.update()
+
+    expect(fetchMock.called()).toEqual(true)
 
   })
 
