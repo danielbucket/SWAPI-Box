@@ -11,7 +11,8 @@ class Person extends Component{
   }
 
 componentDidMount(){
-  fetch(`${this.props.data.homeworld}`)
+
+  let p1 = fetch(`${this.props.data.homeworld}`)
   .then( (resp) => resp.json() )
   .then( (info) => {
 
@@ -25,7 +26,7 @@ componentDidMount(){
   })
 
 
-fetch(`${this.props.data.species[0]}`)
+let p2 =fetch(`${this.props.data.species[0]}`)
 .then( (resp) => resp.json() )
 .then( (info) => {
   this.setState({
@@ -35,24 +36,30 @@ fetch(`${this.props.data.species[0]}`)
 }).catch( (e) => {
   console.log(e);
 })
+
+Promise.all([p1,p2])
+
+
 }
 
 render(){
   return (
-    <article className = "card">
+    <article className = {this.props.isFavorite} >
       <div className = "card-title">
         {this.props.data.name}
-      <div className = "favorites-btn"></div>
+      <div
+      onClick={()=>{this.props.selectedFavorites(this.props.data.name)}}
+       className = {this.props.isFavorite+"-button"}></div>
       </div>
       <div className = "card-info-container">
-      <div className = "card-info">Homeworld:
+      <div className = "card-info"><span className="info-cat">Homeworld:</span>
       {this.state.homeworld}
       </div>
-      <div className = "card-info">Species:
+      <div className = "card-info"><span className="info-cat">Species:</span>
       {this.state.species}
       </div>
       <div className = "card-info">
-      Population: {this.state.population}
+      <span className="info-cat">Population:</span> {this.state.population}
       </div>
     </div>
 

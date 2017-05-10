@@ -33,3 +33,15 @@
 .header-box {
   width: 25%;
 }
+
+.header li{
+  list-style-type: none;
+}
+
+.isActive{
+  :yellow;
+}
+
+.isInactive{
+  color:#000
+}

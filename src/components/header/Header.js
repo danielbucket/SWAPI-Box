@@ -1,8 +1,21 @@
-import React from 'react';
+import React,{Component} from 'react';
 import style from './header.css';
 
 
-const Header = ( {props} ) => {
+class Header extends Component {
+  constructor(){
+    super()
+    this.state = {
+      hasBeenClicked : false
+    }
+  }
+
+
+  render(){
+    let active = this.state.hasBeenClicked?"isActive":"isInactive"
+    let list = this.state.hasBeenClicked? this.props.favorites.map(i=>{
+      return <li>{i}</li>
+    }):""
 
   return (
     <header className="header">
@@ -19,14 +32,19 @@ const Header = ( {props} ) => {
           {/* movie name Object  */} PlaceHolder Movie Title
         </h3>
         <div className="header-box"
-            // this is where well pass in a function that displays all the favorited items
-            //  onClick={ () => {  }}
+          onClick={ () => {this.setState({hasBeenClicked:!this.state.hasBeenClicked})}}
              >
-          Favorites: {/*  <p>passed in value</p> */} 24
+             <div className = {active}>
+          Favorites:{this.props.favorites.length}
+            <ul>
+            {list}
+            </ul>
+            </div>
         </div>
       </div>
     </header>
   )
+  }
 }
 
 export default Header;

@@ -15,7 +15,8 @@ class App extends Component {
       favorites: [],
       category: [],
       categoryType: "",
-      aboutMovie: ""
+      aboutMovie: "",
+      activeButton:""
     }
   }
 
@@ -37,9 +38,19 @@ class App extends Component {
     })
   }
 
+  selectFavorite(input){
+    let tempFav  = this.state.favorites
+    let position = tempFav.indexOf(input)
+    position<=-1?
+    tempFav.push(input):
+    tempFav.splice(position,1)
+    this.setState({favorites:tempFav})
+
+  }
+
   selectCategory(input){
     let dataSource;
-
+    this.setState({activeButton:input})
     if (typeof input === 'string') {
       dataSource = `http://swapi.co/api/${input}/?format=json`;
     } else if (typeof input === 'number') {
@@ -72,15 +83,17 @@ class App extends Component {
 
         <section className="right-side-screen">
             <Header
-              favorites={ this.state.favorites }
+              favorites={ this.state.favorites}
             />
           <div className="category-container">
             <CategorySelect
+              activeButton={this.state.activeButton}
               selectCategory={ this.selectCategory.bind(this) }
             />
           </div>
             <CategoryDisplay
-              selectedFavorites={ this.state.favorites }
+              favorites ={this.state.favorites}
+              selectedFavorites={ this.selectFavorite.bind(this)}
               presentCategory={ this.state.category }
               typeCategory={ this.state.categoryType }
             />

@@ -7,38 +7,40 @@ import Planets from '../Planets/Planets'
 
 import Vehicle from '../Vehicle/Vehicle'
 
-const CategoryDisplay = ({ presentCategory, typeCategory, selectedFavorites }) => {
+const CategoryDisplay = ({favorites, presentCategory, typeCategory, selectedFavorites }) => {
   let list;
+  let isFavorite;
   switch(typeCategory){
     case "people":
      list = presentCategory.map((data,i)=>{
-       return <People key ={i} data={data}/>
+      isFavorite=  favorites.indexOf(data.name)>-1?
+      "favorite":"not-favorite"
+       return <People
+       isFavorite={isFavorite}
+        selectedFavorites={selectedFavorites} key ={i} data={data}/>
      })
      break;
 
     case 'planets':
     list = presentCategory.map((data,i)=>{
-      return <Planets key={i} data={data}/>
+      isFavorite=  favorites.indexOf(data.name)>-1?
+      "favorite":"not-favorite"
+      return <Planets isFavorite={isFavorite} selectedFavorites={selectedFavorites} key={i} data={data}/>
     })
     break;
 
 
     case 'vehicles':
     list = presentCategory.map((data,i) =>{
-      return <Vehicle key={i} data={data}/>
+      isFavorite=  favorites.indexOf(data.name)>-1?
+      "favorite":"not-favorite"
+      return <Vehicle isFavorite={isFavorite} selectedFavorites={selectedFavorites} key={i} data={data}/>
     })
     break;
   }
 
-
-  // if (typeCategory === "people") {
-  //   list =
-  // }
-  //   list =
-  //
-
   return (
-    <div>
+    <div className='category-display'>
     {list}
 
     </div>
