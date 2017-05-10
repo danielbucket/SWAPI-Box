@@ -4,7 +4,7 @@ import './categorySelect.css'
 
 const CategorySelect = ({selectCategory,activeButton}) => {
     return (
-    <div>
+    <div className="category-select">
       <button className={activeButton==='people'?"active":"not-active"} onClick={ () => { selectCategory('people') }}>
         People
       </button>
