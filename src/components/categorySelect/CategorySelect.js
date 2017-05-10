@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './categorySelect.css'
+import './categorySelect.css'
 
 
 const CategorySelect = ({selectCategory,activeButton}) => {
