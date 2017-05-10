@@ -1,24 +1,25 @@
 import React    from 'react';
-import style    from './categoryDisplay.css';
 import People   from '../Person/Person';
 import Planets  from '../Planets/Planets';
 import Vehicle  from '../Vehicle/Vehicle';
+import './categoryDisplay.css';
 
 const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites}) => {
   let list;
   let isFavorite;
+
   switch(typeCategory) {
     case "people":
-     list = presentCategory.map( (data,i) => {
-      isFavorite =  favorites.indexOf(data.name) > -1
+     list = presentCategory.map( (data, i) => {
+      isFavorite = favorites.indexOf(data.name) > -1
                                                 ? "favorite"
                                                 : "not-favorite"
       return <People  isFavorite={ isFavorite }
                       selectedFavorites={ selectedFavorites }
                       key={ i }
                       data={ data }/>
-     });
-     break;
+    });
+    break;
 
     case 'planets':
     list = presentCategory.map( (data, i) => {
@@ -33,7 +34,7 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
     break;
 
     case 'vehicles':
-    list = presentCategory.map( (data,i) => {
+    list = presentCategory.map( (data, i) => {
       isFavorite=  favorites.indexOf(data.name) > -1
                                                 ? "favorite"
                                                 : "not-favorite"
@@ -43,6 +44,8 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
                       data={ data } />
     });
     break;
+    default:
+    console.log("CategoryDisplay has revieved no props");
   };
 
   return (

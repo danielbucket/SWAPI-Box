@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import Header               from './components/header/Header';
+import CategorySelect       from './components/categorySelect/CategorySelect';
+import CategoryDisplay      from './components/categoryDisplay/CategoryDisplay';
+import AboutMovie           from './components/aboutMovie/AboutMovie.js';
 import './App.css';
-import Header from './components/header/Header';
-import CategorySelect from './components/categorySelect/CategorySelect';
-import CategoryDisplay from './components/categoryDisplay/CategoryDisplay';
-import AboutMovie from './components/aboutMovie/AboutMovie.js';
 
 class App extends Component {
   constructor() {
@@ -35,36 +35,39 @@ class App extends Component {
     })
   };
 
-  selectFavorite(input){
+  selectFavorite(input) {
     let tempFav  = this.state.favorites
     let position = tempFav.indexOf(input)
-    
-    position <= -1 ? tempFav.push(input) : tempFav.splice(position,1)
-    this.setState({ favorites:tempFav })
+
+    position <= -1 ? tempFav.push(input) : tempFav.splice(position, 1)
+    this.setState({ favorites: tempFav })
   };
 
-  selectCategory(input){
+  selectCategory(input) {
     let dataSource;
-
+    //is this the best time to setState()? I'm concerned about rerendering
     this.setState({ activeButton: input })
+
     if (typeof input === 'string') {
       dataSource = `http://swapi.co/api/${input}/?format=json`;
-    } else if (typeof input === 'number') {
+    }
+
+    if (typeof input === 'number') {
       dataSource = `http://swapi.co/api/films/${input}/?format=json`;
     }
 
     fetch(dataSource)
     .then( resp => resp.json() )
     .then( data => {
-      this.setState({ category     : data.results,
-                      categoryType : input,
-                      aboutMovie   : this.state.aboutMovie
-                    });
+      this.setState({ category: data.results,
+                  categoryType: input,
+                    aboutMovie: this.state.aboutMovie
+                  });
+                  console.log(this.state)
     }).catch( e => {
-      console.log(e);
+      console.log(e)
     })
   }
-
   render() {
     return (
       <div className="App">

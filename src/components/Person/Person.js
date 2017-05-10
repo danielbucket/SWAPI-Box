@@ -4,40 +4,39 @@ class Person extends Component {
   constructor() {
     super()
     this.state = {
-      homeworld : "",
-      species   : "",
+       homeworld: "",
+         species: "",
       population: ""
     };
   };
 
-componentDidMount() {
-  let p1 = fetch(`${this.props.data.homeworld}`)
-  .then( resp => resp.json() )
-  .then( info => {
+  componentDidMount() {
+    let p1 = fetch(`${this.props.data.homeworld}`)
+    .then( resp => resp.json() )
+    .then( info => {
 
-    this.setState({
-      homeworld  : info.name,
-      population : info.population
+      this.setState({
+          homeworld: info.name,
+         population: info.population
+      });
+    })
+    .catch( e => {
+      console.log(e)
+    })
+
+    let p2 =fetch(`${this.props.data.species[0]}`)
+    .then( resp => resp.json() )
+    .then( info => {
+      this.setState({
+            species: info.name
+      });
+    })
+    .catch( e => {
+      console.log(e)
     });
-  })
-  .catch( e => {
-    console.log(e)
-  })
 
-
-  let p2 =fetch(`${this.props.data.species[0]}`)
-  .then( resp => resp.json() )
-  .then( info => {
-    this.setState({
-      species : info.name
-    });
-  })
-  .catch( e => {
-    console.log(e)
-  });
-
-  Promise.all([p1,p2])
-}
+    Promise.all([p1,p2])
+  };
 
   render() {
     return (
@@ -49,7 +48,6 @@ componentDidMount() {
             className={ this.props.isFavorite+"-button" }>
          </div>
         </div>
-
         <div className="card-info-container">
           <div className="card-info">
             <span className="info-cat">Homeworld:</span>
@@ -65,8 +63,9 @@ componentDidMount() {
           </div>
         </div>
       </article>
-    )
+    );
   };
+
 };
 
 export default Person;
