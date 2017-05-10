@@ -1,0 +1,15 @@
+.not-active, .active{
+  background: aliceblue;
+  border: none;
+  width: 130px;
+  border: 1px black solid;
+  height: 50px;
+}
+
+.not-active{
+  background: aliceblue;
+}
+
+.active{
+  background-color: #fecb32
+}

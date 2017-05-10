@@ -22,7 +22,7 @@ const Header = ( {props} ) => {
             // this is where well pass in a function that displays all the favorited items
             //  onClick={ () => {  }}
              >
-          Favorites: {/*  <p>passed in value</p> */} 24
+          Favorites: {/*  <p>passed in value</p> */} 24 
         </div>
       </div>
     </header>

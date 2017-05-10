@@ -1,4 +1,55 @@
 .category-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
-  height: 500px;
+}
+
+
+.favorite, .not-favorite{
+      padding: 5px;
+      width:190px;
+      margin: 10px;
+      border-radius: 15px;
+      font-weight: 300;
+    }
+
+.not-favorite{
+  box-shadow: 1px 1px 20px 2px  #D8D8DA;
+
+}
+
+.favorite{
+  box-shadow: 1px 1px 20px 2px  #fecb32;
+}
+
+.not-favorite-button, .favorite-button{
+  background-size: cover;
+  background-repeat: none;
+  width:20px;
+  height:20px;
+}
+
+.not-favorite-button{
+    background-image: url('../../icon/starBlack.png')
+}
+
+.favorite-button{
+    background-image: url('../../icon/starGold.png');
+}
+
+.info-cat{
+  color:red;
+  margin-right: 5px;
+}
+
+.card-title{
+  display:flex;
+  justify-content: space-around;
+  font-weight:500;
+}
+
+.card-info{
+  display: flex;
+  overflow-x: scroll;
 }
