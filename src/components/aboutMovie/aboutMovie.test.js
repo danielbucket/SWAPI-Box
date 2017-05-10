@@ -26,9 +26,12 @@ describe('aboutMovie test',()=>{
   })
 
   it('should have a button that can be clicked',()=>{
-    const wrapper = mount(<AboutMovie movieSummary={["s","t","a","r"]}/>)
+    const spy = jest.fn();
+    const wrapper = mount(<AboutMovie selectCategory={spy} movieSummary={["s","t","a","r"]}/>)
     const btn = wrapper.find('button')
-
+    let fBtn = wrapper.find('button').first()
+    fBtn.simulate('click')
+    expect(spy).toBeCalled()
   })
 
 

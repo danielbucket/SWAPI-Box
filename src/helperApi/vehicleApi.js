@@ -13,7 +13,7 @@ const vehicleScrubber = () => {
    }, [])
  }).then((listOfVehicle) => {
    return listOfVehicle
- })
+ }).catch((e) => console.log(e))
 }
 
 const apiCall = (address) => {

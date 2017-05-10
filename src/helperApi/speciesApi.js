@@ -13,7 +13,7 @@ const speciesScrubber = () => {
    }, [])
  }).then((listOfSpecies) => {
    return listOfSpecies
- })
+ }).catch((e) => console.log(e))
 }
 
 const apiCall = (address) => {

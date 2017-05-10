@@ -3,6 +3,13 @@ import Header               from './components/header/Header';
 import CategorySelect       from './components/categorySelect/CategorySelect';
 import CategoryDisplay      from './components/categoryDisplay/CategoryDisplay';
 import AboutMovie           from './components/aboutMovie/AboutMovie.js';
+
+// import apiTotal             from './helperApi/api-total.js'
+// import people from  './helperApi/peopleApi.js'
+// import planets from './helperApi/planetsApi.js'
+// import species from './helperApi/speciesApi.js'
+// import vehicle from './helperApi/vehicleApi.js'
+
 import './App.css';
 
 class App extends Component {
@@ -63,7 +70,6 @@ class App extends Component {
                   categoryType: input,
                     aboutMovie: this.state.aboutMovie
                   });
-                  console.log(this.state)
     }).catch( e => {
       console.log(e)
     })
