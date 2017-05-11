@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 const Vehicle = ({ data, isFavorite, selectedFavorites }) => {
 
   return (
-    <article className={ isFavorite }>
+    <article    onClick={ () => {selectedFavorites(data.name)} }
+                className={ isFavorite }>
       <div className="card-title">
         { data.name }
-        <div
-          onClick={ () => {selectedFavorites(data.name)} }
-          className={ isFavorite+"-button" }>
+        <div className={ isFavorite+"-button" }>
         </div>
       </div>
       <div className="card-info-container">
