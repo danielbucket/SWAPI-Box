@@ -3,7 +3,7 @@ import Header               from './components/header/Header';
 import CategorySelect       from './components/categorySelect/CategorySelect';
 import CategoryDisplay      from './components/categoryDisplay/CategoryDisplay';
 import AboutMovie           from './components/aboutMovie/AboutMovie.js';
-import './App.css';
+import                           './App.css';
 
 
 class App extends Component {
@@ -20,9 +20,7 @@ class App extends Component {
     };
   };
 
-
-
-  componentWillMount(){
+  componentWillMount() {
     let episode = Math.floor(Math.random() * (6))+1;
 
     fetch(`http://swapi.co/api/films/?/format=json`)
@@ -38,7 +36,6 @@ class App extends Component {
 
   selectFavorite(input) {
     let tempFav  = this.state.favorites;
-
 
     let position = tempFav.indexOf(input)
     position <= -1
@@ -80,23 +77,23 @@ class App extends Component {
       <div className="App">
         <section className="left-side-screen">
           <aside className="aside">
-             <AboutMovie  movieSummary={ this.state.defaultAboutMovie }
-                          selectCategory={ this.selectCategory.bind(this) } />
+             <AboutMovie          movieSummary={ this.state.defaultAboutMovie }
+                                selectCategory={ this.selectCategory.bind(this) } />
           </aside>
         </section>
         <section className="right-side-screen">
-            <Header favorites={ this.state.favorites}
-                    movieSummary={ this.state.aboutMovie } />
+            <Header                  favorites={ this.state.favorites}
+                                  movieSummary={ this.state.aboutMovie } />
           <div className="category-container">
-            <CategorySelect activeButton={ this.state.activeButton }
-                            selectCategory={ this.selectCategory.bind(this) } />
+            <CategorySelect       activeButton={ this.state.activeButton }
+                                selectCategory={ this.selectCategory.bind(this) } />
           </div>
             <CategoryDisplay  displayMovieInfo={ this.state.displayMovieInfo }
-                              favorites={ this.state.favorites }
-                              selectedFavorites={ this.selectFavorite.bind(this) }
-                              presentCategory={ this.state.category }
-                              typeCategory={ this.state.categoryType }
-                              movieSummary={ this.state.aboutMovie } />
+                                     favorites={ this.state.favorites }
+                             selectedFavorites={ this.selectFavorite.bind(this) }
+                               presentCategory={ this.state.category }
+                                  typeCategory={ this.state.categoryType }
+                                  movieSummary={ this.state.aboutMovie } />
         </section>
       </div>
     );

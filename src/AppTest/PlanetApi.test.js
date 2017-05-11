@@ -56,7 +56,7 @@ describe('Planet API Test', () => {
     wrapper.update()
 
     expect(wrapper.state().activeButton).toEqual('planets')
-console.log(wrapper.state())
+// console.log(wrapper.state())
     })
 
 })
