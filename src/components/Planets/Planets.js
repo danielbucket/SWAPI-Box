@@ -29,12 +29,11 @@ class Planets extends Component {
 
   render() {
     return (
-      <article className={ this.props.isFavorite }>
+      <article   onClick={ () => {  this.props.selectedFavorites(this.props.data.name)} }
+       className={ this.props.isFavorite }>
         <div className="card-title">
           { this.props.data.name }
-          <div
-            onClick={ () => {  this.props.selectedFavorites(this.props.data.name)} }
-            className={ this.props.isFavorite+"-button" }>
+          <div className={ this.props.isFavorite+"-button" }>
           </div>
         </div>
         <div className="card-info-container">

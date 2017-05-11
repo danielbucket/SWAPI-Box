@@ -52,7 +52,8 @@ describe('Person test',() => {
             data= {{name:'han',homeworld:"Naboo",species:["human"]}}
             selectedFavorites = {spy}
             />)
-    expect(spy).toBeCalled()
+          wrapper.simulate('click')
+          expect(spy).toBeCalled()
   })
 
 })
