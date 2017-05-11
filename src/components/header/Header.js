@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
-import './header.css';
+import React,{Component} from 'react';
+import style from './header.css';
+import PropTypes from 'prop-types';
+
+
 
 class Header extends Component {
   constructor(){
@@ -46,4 +49,8 @@ class Header extends Component {
   }
 };
 
-export default Header;
+Header.PropTypes = {
+  favorites:PropTypes.array  
+}
+
+export default Header

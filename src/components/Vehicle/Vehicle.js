@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Vehicle = ({ data, isFavorite, selectedFavorites }) => {
 
@@ -21,5 +22,11 @@ const Vehicle = ({ data, isFavorite, selectedFavorites }) => {
     </article>
   );
 };
+
+Vehicle.PropTypes = {
+  isFavorite:PropTypes.string,
+  data: PropTypes.object,
+  selectedFavorites: PropTypes.func
+}
 
 export default Vehicle

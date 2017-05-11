@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './categorySelect.css'
 
 
@@ -23,7 +25,9 @@ const CategorySelect = ({selectCategory,activeButton}) => {
     )
   }
 
-
-
+  CategorySelect.PropTypes = {
+    activeButton:PropTypes.string,
+    selectCategory: PropTypes.func
+  }
 
 export default CategorySelect;

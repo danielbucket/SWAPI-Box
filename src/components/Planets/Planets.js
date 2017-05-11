@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Planets extends Component {
   constructor() {
     super();
     this.state = {
-      residents: []
+      residents: ["Gredo"]
     };
   };
 
@@ -58,5 +59,11 @@ class Planets extends Component {
     );
   };
 };
+
+Planets.PropTypes = {
+  isFavorite:PropTypes.string,
+  data: PropTypes.object,
+  selectedFavorites: PropTypes.func
+}
 
 export default Planets;
