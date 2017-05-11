@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {mount,shallow} from 'enzyme'
 import fetchMock from 'fetch-mock'
-import fakeData  from './App-test-helper.js'
-
+import fakeData  from './helperApi/App-test-helper.js'
+import fakePeople from './helperApi/fakePeople.js'
+import fakeVehicle from './helperApi/fakeVehicle.js'
+import fakePlanets from './helperApi/fakePlanets.js'
 
 describe('App test',()=>{
 
@@ -27,11 +29,7 @@ describe('App test',()=>{
     expect(fetchMock.calls().unmatched).toEqual([]);
     fetchMock.restore()
   });
-  //
-  // it('renders without crashing', () => {
-  //   const div = document.createElement('div');
-  //   ReactDOM.render(<App />, div);
-  // });
+
 
   it('has a class',()=>{
     const wrapper = shallow(<App/>)
@@ -60,20 +58,37 @@ describe('App test',()=>{
     expect(wrapper.state()).toEqual(expected)
   })
 
-  it.only('can change its state', async ()=>{
-    fetchMock.get('http://swapi.co/api/films/?/format=json', {
-      status: 200,
-      body: fakeData
-    })
+  it('can change its state on load', async ()=>{
 
     const wrapper = mount(<App/>)
+    expect(typeof wrapper.state().defaultAboutMovie.title).toEqual('undefined')
 
     await testP
 
      wrapper.update()
 
     expect(fetchMock.called()).toEqual(true)
-
+    expect(typeof wrapper.state().defaultAboutMovie.title).toEqual("string")
   })
 
+it('can change its state when clicking on other buttons', async() =>{
+
+  fetchMock.get('http://swapi.co/api/vehicles/?format=json', {
+    status: 200,
+    body: fakeVehicle
+})
+
+  const wrapper = mount(<App/>)
+  const button = wrapper.find('button').last()
+  expect(wrapper.state().activeButton).toEqual('')
+  expect(wrapper.state().category).toEqual([])
+  console.log(wrapper.state)
+  button.simulate('click')
+  await testP
+  wrapper.update()
+
+  expect(wrapper.state().activeButton).toEqual('vehicles')
+  // expect(wrapper.state().category[0].name).toEqual("Sand Crawler")
+  console.log(wrapper.state())
+  })
 })
