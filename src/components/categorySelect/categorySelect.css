@@ -26,3 +26,7 @@
 .active {
   background-color: #fecb32
 }
+
+.not-active:hover, .active{
+  box-shadow: 2px 2px 20px #fec82f;
+}
