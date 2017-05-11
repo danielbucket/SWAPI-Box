@@ -54,7 +54,7 @@ describe('Vehicle API Test', () => {
 
     expect(wrapper.state().activeButton).toEqual('vehicles')
     expect(wrapper.state().category[0].name).toEqual("Sand Crawler")
-    console.log(wrapper.state())
+    expect(wrapper.find("Vehicle").length).toEqual(10)
     })
 
 })

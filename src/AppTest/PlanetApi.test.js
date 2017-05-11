@@ -39,20 +39,24 @@ describe('Planet API Test', () => {
     })
 
     const wrapper = mount(<App />)
+    await testP
 
     wrapper.update()
 
-    //could we find the button in a more specific way?
     const button = wrapper.find('#planet-btn')
 
     expect(wrapper.state().activeButton).toEqual('')
     expect(wrapper.state().category).toEqual( [] )
+
+    wrapper.setState({category: fakePlanets})
 
     button.simulate('click')
     await testP
 
     wrapper.update()
 
+    expect(wrapper.state().activeButton).toEqual('planets')
+console.log(wrapper.state())
     })
 
 })
