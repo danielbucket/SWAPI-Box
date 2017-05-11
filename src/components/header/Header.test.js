@@ -17,9 +17,10 @@ describe('Header test',()=>{
 
   it('should have elements within it',()=>{
     const wrapper = mount(<Header favorites={["Gredo"]} /> )
+
     expect((wrapper.find('ul').length)).toEqual(1)
     expect((wrapper.find('h2').length)).toEqual(1)
-    expect((wrapper.find('h3').length)).toEqual(1)
+    // expect((wrapper.find('h3').length)).toEqual(1)
     expect((wrapper.find('header').length)).toEqual(1)
   })
 
