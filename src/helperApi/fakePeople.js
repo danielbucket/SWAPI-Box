@@ -1,7 +1,5 @@
 const fakePeople = {
-    "count": 87,
-    "next": "http://swapi.co/api/people/?page=2",
-    "previous": null,
+
     "results": [
         {
             "name": "Luke Skywalker",
