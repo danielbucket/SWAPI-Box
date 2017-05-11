@@ -8,17 +8,20 @@ const CategorySelect = ({selectCategory,activeButton}) => {
     return (
     <div className="category-select">
       <button className={ activeButton === 'people' ? "active" : "not-active" }
-              onClick={ () => { selectCategory('people') } }>
+              onClick={ () => { selectCategory('people') }}
+              id="people-btn">
         People
       </button>
 
       <button className={ activeButton === 'planets' ? "active" : "not-active" }
-              onClick={ () => { selectCategory('planets') } }>
+              onClick={ () => { selectCategory('planets') } }
+              id="planet-btn">
         Planets
       </button>
 
       <button className={ activeButton === 'vehicles' ? "active" : "not-active" }
-              onClick={ () => { selectCategory('vehicles') } }>
+              onClick={ () => { selectCategory('vehicles') } }
+              id="vehicle-btn">
         Vehicles
       </button>
     </div>
