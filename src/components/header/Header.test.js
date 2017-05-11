@@ -20,7 +20,6 @@ describe('Header test',()=>{
 
     expect((wrapper.find('ul').length)).toEqual(1)
     expect((wrapper.find('h2').length)).toEqual(1)
-    // expect((wrapper.find('h3').length)).toEqual(1)
     expect((wrapper.find('header').length)).toEqual(1)
   })
 
@@ -28,11 +27,5 @@ describe('Header test',()=>{
       const wrapper = mount(<Header favorites={["Gredo"]} />)
       expect(wrapper.state()).toEqual({ hasBeenClicked: false })
   })
-
-//   it('should contain a list of li based off of how many favorites it is passed',()=>{
-// const wrapper = mount(<Header favorites={["Gredo","Han"]} />)
-// expect((wrapper.find('li').length)).toEqual(2)
-//
-//   })
 
 })
