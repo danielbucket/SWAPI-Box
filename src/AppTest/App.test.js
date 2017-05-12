@@ -47,13 +47,16 @@ describe('App test', () => {
 
   it('has a default state', () => {
     const wrapper = mount(<App />)
-    const expected  = { favorites: [],
-      category: [],
-      categoryType: '',
-      aboutMovie: '',
-      activeButton: '',
-      defaultAboutMovie: "",
-      displayMovieInfo: false}
+    const expected  = {
+                      favorites: [],
+                      category: [],
+                      categoryType: '',
+                      aboutMovie: '',
+                      activeButton: '',
+                      defaultAboutMovie: "",
+                      displayMovieInfo: false,
+                      showFavorites: false
+                    }
 
     expect(wrapper.state()).toEqual(expected)
   })
@@ -65,10 +68,12 @@ describe('App test', () => {
 
     await testP
 
-    wrapper.update()
-
     expect(fetchMock.called()).toEqual(true)
-    expect(typeof wrapper.state().defaultAboutMovie.title).toEqual("string")
+    expect(wrapper.state().defaultAboutMovie.title).toEqual('A WONDEROUS DAY')
+    expect(wrapper.state().defaultAboutMovie.episode_id).toEqual(4)
+    expect(wrapper.state().defaultAboutMovie.director).toEqual('George Lucas')
+    expect(wrapper.find('AboutMovie').props().movieSummary.title).toEqual('A WONDEROUS DAY')
   })
+
 
 })

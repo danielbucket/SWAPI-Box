@@ -8,7 +8,7 @@ import                   './categoryDisplay.css';
 
 
 
-const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary,displayMovieInfo }) => {
+const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary,displayMovieInfo,showFavorites }) => {
   let list;
   let isFavorite;
 
@@ -56,6 +56,11 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
     }
   }
 
+  if(showFavorites){
+  list =  list.filter(val=>{
+      return val.props.isFavorite ==="favorite"
+    })
+  }
   return (
     <div className='category-display'>
       { list }
