@@ -4,10 +4,10 @@ import Person             from './Person';
 import { mount, shallow } from 'enzyme';
 
 describe('Person test', () => {
-  const wrapper =mount(<Person isFavorite="favorite"
-                                  data={ {name      : 'han',
-                                          homeworld : "Naboo",
-                                          species   : ["human"]} }
+  const wrapper = mount(<Person isFavorite="favorite"
+                                      data={ {name      : 'han',
+                                              homeworld : "Naboo",
+                                              species   : ["human"]} }
                                         />)
 
   it('renders without crashing', () => {
@@ -40,9 +40,9 @@ describe('Person test', () => {
   });
 
   it('should have a default state', () => {
-    let expected = { homeworld : "",
-                     species   : "",
-                     population: "" }
+    let expected = { homeworld  : "",
+                     species    : "",
+                     population : "" }
 
     expect(wrapper.state()).toEqual(expected)
   });

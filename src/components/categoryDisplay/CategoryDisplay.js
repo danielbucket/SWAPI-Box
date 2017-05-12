@@ -8,8 +8,7 @@ import                   './categoryDisplay.css';
 import                   './categoryDisplay-break550.css';
 
 
-
-const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary,displayMovieInfo,showFavorites }) => {
+const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFavorites, movieSummary, displayMovieInfo, showFavorites }) => {
   let list;
   let isFavorite;
 
@@ -58,7 +57,7 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
   }
 
   if (showFavorites) {
-  list =  list.filter(val=>{
+      list = list.filter(val => {
       return val.props.isFavorite === "favorite"
     })
   };

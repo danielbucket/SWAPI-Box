@@ -1,9 +1,9 @@
-import React from 'react'
-import './MovieDetails.css'
+import React     from 'react'
 import PropTypes from 'prop-types';
+import                './MovieDetails.css'
 
 
-const MovieDetails = ({movieSummary}) => {
+const MovieDetails = ({ movieSummary }) => {
   return(
     <div className="movie-summary">
       <div className="movie-title">
@@ -26,13 +26,11 @@ const MovieDetails = ({movieSummary}) => {
         { movieSummary.opening_crawl }
       </div>
     </div>
-  )
-
-}
+  );
+};
 
 MovieDetails.PropTypes = {
   movieSummary: PropTypes.object,
-}
+};
 
-
-export default MovieDetails
+export default MovieDetails;

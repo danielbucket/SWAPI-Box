@@ -20,15 +20,16 @@ class Header extends Component {
     return (
       <header className="header">
         <a className="website-name"
-           href="https://swapi.co/"
-           target="_blank">
-          <h2 >
+                href="https://swapi.co/"
+              target="_blank">
+          <h2>
             SWAPI BOX
           </h2>
         </a>
-        <div onClick={ () => {this.props.displayFavorites()} } className="favorites-container">
-          <div  className="header-box"
-                  onClick={ () => { this.setState({ hasBeenClicked: !this.state.hasBeenClicked }) } }>
+        <div onClick={ () => {this.props.displayFavorites()} }
+           className="favorites-container">
+          <div className="header-box"
+                 onClick={ () => { this.setState({ hasBeenClicked: !this.state.hasBeenClicked }) } }>
             <div className={ active }>
               <p className="favorites-title">Favorites:<span>{ this.props.favorites.length }</span></p>
               <div className="list-container">
