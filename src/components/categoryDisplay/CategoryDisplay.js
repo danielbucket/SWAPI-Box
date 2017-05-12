@@ -5,6 +5,7 @@ import Vehicle      from '../Vehicle/Vehicle';
 import MovieDetails from '../MovieDetails/MovieDetails.js'
 import PropTypes    from 'prop-types';
 import                   './categoryDisplay.css';
+import                   './categoryDisplay-break550.css';
 
 
 
@@ -12,7 +13,7 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
   let list;
   let isFavorite;
 
-  if (displayMovieInfo){
+  if (displayMovieInfo) {
     list = <MovieDetails movieSummary={ movieSummary } />
   } else {
     switch(typeCategory) {
@@ -22,9 +23,9 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
                                                   ? "favorite"
                                                   : "not-favorite"
           return <People  isFavorite={ isFavorite }
-                          selectedFavorites={ selectedFavorites }
-                          key={ i }
-                          data={ data }/>
+                   selectedFavorites={ selectedFavorites }
+                                 key={ i }
+                                data={ data } />
         })
       break;
 
@@ -34,9 +35,9 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
                                                   ? "favorite"
                                                   : "not-favorite"
           return <Planets isFavorite={ isFavorite }
-                          selectedFavorites={ selectedFavorites }
-                          key={ i }
-                          data={ data } />
+                   selectedFavorites={ selectedFavorites }
+                                 key={ i }
+                                data={ data } />
         })
       break;
 
@@ -46,21 +47,22 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
                                                     ? "favorite"
                                                     : "not-favorite"
           return <Vehicle isFavorite={ isFavorite }
-                          selectedFavorites={ selectedFavorites }
-                          key={ i }
-                          data={ data } />
+                   selectedFavorites={ selectedFavorites }
+                                 key={ i }
+                                data={ data } />
         })
       break;
       default:
-      console.log("CategoryDisplay has revieved no props, bro")
+      console.log("CategoryDisplay ain't recieved no props, bro")
     }
   }
 
-  if(showFavorites){
+  if (showFavorites) {
   list =  list.filter(val=>{
-      return val.props.isFavorite ==="favorite"
+      return val.props.isFavorite === "favorite"
     })
-  }
+  };
+
   return (
     <div className='category-display'>
       { list }

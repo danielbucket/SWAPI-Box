@@ -4,6 +4,7 @@ import CategorySelect       from './components/categorySelect/CategorySelect';
 import CategoryDisplay      from './components/categoryDisplay/CategoryDisplay';
 import AboutMovie           from './components/aboutMovie/AboutMovie.js';
 import                           './App.css';
+import                           './App-break550.css';
 
 
 class App extends Component {

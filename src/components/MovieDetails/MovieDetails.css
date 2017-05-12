@@ -1,4 +1,4 @@
-.movie-summary{
+.movie-summary {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,15 +6,10 @@
   font-weight: 100;
 }
 
-.movie-title{
+.movie-title {
   font-size: 20px;
 }
 
 .movie-info{
-  padding-top:10px;
-}
-
-
-.movie-cat{
-  color:red
+  padding-top: 10px;
 }

@@ -1,17 +1,20 @@
 .category-display {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
-  margin-top: 15px;
+  max-height: 100vh;
+  padding-top: 15px;
+  overflow-y: scroll;
 }
 
 .favorite, .not-favorite {
+  overflow-x: scroll;
   border: 1px solid green;
   padding: 5px;
-  width:190px;
+  width: 200px;
   margin: 10px;
-  border-radius: 15px;
+  border-radius: 5px 40px 0px 0px;
   font-weight: 300;
 }
 
@@ -20,14 +23,14 @@
 }
 
 .favorite {
-  box-shadow: 0px -7px 20px 0px  #fecb32;
+  box-shadow: 4px -4px 20px 0px  #fecb32;
 }
 
 .not-favorite-button, .favorite-button {
   background-size: cover;
   background-repeat: none;
-  width:20px;
-  height:20px;
+  width: 20px;
+  height: 20px;
 }
 
 .not-favorite-button {
@@ -38,9 +41,14 @@
   background-image: url('../../icon/starGold.png');
 }
 
+.movie-summary {
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+}
 
-.info-cat {
-  color:red;
+.movie-cat {
+  color: #ef2f2f;
   margin-right: 5px;
 }
 
@@ -52,5 +60,4 @@
 
 .card-info  {
   display: flex;
-  overflow-x: scroll;
 }

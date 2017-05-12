@@ -1,0 +1,14 @@
+@media only screen and (max-width: 550px) {
+    body {
+      overflow-y: visible;
+      overflow-x: hidden;
+    }
+
+    .aside {
+      min-width: 170px;
+    }
+
+    .movie-describer {
+      font-size: 12px;
+    }
+}

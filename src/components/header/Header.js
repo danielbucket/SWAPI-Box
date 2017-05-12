@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes            from 'prop-types';
 import                           './header.css';
+import                           './header-break550.css';
 
 class Header extends Component {
   constructor() {

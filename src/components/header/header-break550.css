@@ -1,0 +1,26 @@
+@media only screen and (max-width: 550px) {
+
+.header {
+  justify-content: center;
+  flex-flow: column;
+  margin-bottom: 20px;
+}
+
+  .website-name {
+    width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 25px;
+  }
+
+  .favorites-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .favorites-container {
+  }
+
+  .header-box {
+  }
+}
