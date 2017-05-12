@@ -63,9 +63,12 @@ const CategoryDisplay = ({ favorites, presentCategory, typeCategory, selectedFav
   };
 
   return (
-    <div className='category-display'>
-      { list }
-    </div>
+    <section className="category-display-container">
+      <div className='category-display'>
+        { list }
+      </div>
+    </section>
+
   );
 };
 

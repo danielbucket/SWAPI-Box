@@ -1,11 +1,16 @@
+.category-display-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .category-display {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  width: 100%;
+  justify-content: center;
+  width: 97%;
   max-height: 100vh;
   padding-top: 15px;
-  overflow-y: scroll;
 }
 
 .favorite, .not-favorite {
