@@ -1,24 +1,22 @@
-import React,{Component} from 'react';
-import style from './header.css';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import PropTypes            from 'prop-types';
+import                           './header.css';
 
 
 
 class Header extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
       hasBeenClicked : false
     }
   }
 
-
-  render(){
+  render() {
     let active = this.state.hasBeenClicked ? "isActive" : "isInactive"
     let list = this.state.hasBeenClicked
                ? this.props.favorites.map( i => { return <li>{ i }</li> })
                : ""
-
 
   return (
     <header className="header">
@@ -30,7 +28,7 @@ class Header extends Component {
         </h2>
       </a>
 
-      <div className="favorites-container">
+      <div onClick={ () => {this.props.displayFavorites()} } className="favorites-container">
 
         <div  className="header-box"
               onClick={ () => { this.setState({ hasBeenClicked: !this.state.hasBeenClicked }) } }>
@@ -50,7 +48,7 @@ class Header extends Component {
 };
 
 Header.PropTypes = {
-  favorites:PropTypes.array  
+  favorites:PropTypes.array
 }
 
 export default Header

@@ -11,6 +11,7 @@ class App extends Component {
     super()
     this.state = {
       favorites: [],
+      showFavorites: false,
       category: [],
       categoryType: "",
       aboutMovie: "",
@@ -33,6 +34,16 @@ class App extends Component {
       console.log(e)
     })
   };
+
+  revealCards(){
+    this.setState({showFavorites:false})
+  }
+
+  showFavs() {
+    this.setState({
+      showFavorites: !this.state.showFavorites
+    })
+  }
 
   selectFavorite(input) {
     let tempFav  = this.state.favorites;
@@ -83,12 +94,16 @@ class App extends Component {
         </section>
         <section className="right-side-screen">
             <Header                  favorites={ this.state.favorites}
-                                  movieSummary={ this.state.aboutMovie } />
+                                  movieSummary={ this.state.aboutMovie }
+                              displayFavorites={this.showFavs.bind(this)}/>
           <div className="category-container">
-            <CategorySelect       activeButton={ this.state.activeButton }
+            <CategorySelect
+              displayFavorites = {this.revealCards.bind(this)}
+              activeButton={ this.state.activeButton }
                                 selectCategory={ this.selectCategory.bind(this) } />
           </div>
-            <CategoryDisplay  displayMovieInfo={ this.state.displayMovieInfo }
+            <CategoryDisplay  showFavorites   ={ this.state.showFavorites}
+                              displayMovieInfo={ this.state.displayMovieInfo }
                                      favorites={ this.state.favorites }
                              selectedFavorites={ this.selectFavorite.bind(this) }
                                presentCategory={ this.state.category }

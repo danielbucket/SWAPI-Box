@@ -1,11 +1,11 @@
 import React                from 'react';
 import ReactDOM             from 'react-dom';
 import App                  from '../App';
-import { mount, shallow }   from 'enzyme'
-import fetchMock            from 'fetch-mock'
-import fakeData             from '../helperApi/App-test-helper.js'
-import fakePeople           from '../helperApi/fakePeople.js'
-import fakePlanets          from '../helperApi/fakePlanets.js'
+import { mount, shallow }   from 'enzyme';
+import fetchMock            from 'fetch-mock';
+import fakeData             from '../helperApi/App-test-helper.js';
+import fakePeople           from '../helperApi/fakePeople.js';
+import fakePlanets          from '../helperApi/fakePlanets.js';
 
 
 
@@ -42,19 +42,20 @@ describe('Person API Test', () => {
     const wrapper = mount(<App />)
     await testP
 
-    wrapper.update()
-
     const button = wrapper.find('#people-btn')
 
     expect(wrapper.state().activeButton).toEqual('')
     expect(wrapper.state().category).toEqual( [] )
 
-    wrapper.setState({category: fakePeople})
+    wrapper.setState({ category: fakePeople })
+    wrapper.find('Person').setState({ homeworld   : 'Nabu',
+                                      species     : 'horse',
+                                      population  : 13
+                                    })
 
     button.simulate('click')
     await testP
 
-    wrapper.update()
 
     expect(wrapper.state().activeButton).toEqual('people')
     expect(wrapper.state().category.results[0].name).toEqual("Luke Skywalker")
