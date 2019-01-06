@@ -11,4 +11,8 @@
     .movie-describer {
       font-size: 12px;
     }
+
+    .right-side-screen {
+      min-width: auto;
+    }
 }
